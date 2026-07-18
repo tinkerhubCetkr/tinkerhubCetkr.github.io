@@ -1,0 +1,22 @@
+body{
+    margin: 20px;
+    padding: 20px;
+}
+#logo{
+    width: 100px;
+    height: 100px;
+}
+.main_logo_title{
+    display: flex;
+    align-items: center;       
+    justify-content: center;  
+    gap: 20px;                 
+    margin-top: 40px;          
+    margin-bottom: 20px;       
+}
+.recent_updates{
+    width: autousing namespace std;;
+    max-height: 200px;
+
+    overflow: auto; 
+}
