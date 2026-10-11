@@ -161,7 +161,7 @@ li {
 
 .more-arrow {
     display: inline-block;
-    transition: transform 220ms ease;
+    transition: transform 300ms ease;
 }
 
 /* Menu is hidden initially */
@@ -189,9 +189,9 @@ li {
     transform: translate(16px, -50%);
 
     transition:
-        opacity 180ms ease,
-        transform 220ms ease,
-        visibility 180ms ease;
+        opacity 400ms ease,
+        transform 500ms ease,
+        visibility 400ms ease;
 }
 
 .more-links a {
@@ -203,8 +203,8 @@ li {
     font-size: 0.9rem;
     font-weight: 600;
     transition:
-        background-color 180ms ease,
-        color 180ms ease;
+        background-color 300ms ease,
+        color 300ms ease;
 }
 
 .more-links a:hover {
