@@ -1,22 +1,462 @@
-body{
-    margin: 20px;
+
+/* ==========================================
+   TinkerHub CETKR — Global Stylesheet
+   ========================================== */
+
+:root {
+    --bg: #f7f5ef;
+    --surface: #ffffff;
+    --text: #191919;
+    --muted: #686868;
+    --accent: #c7f36b;
+    --border: #dedbd2;
+    --accent-dark: #506d20;
+
+    --radius: 12px;
+    --content-width: 1120px;
+}
+
+/* ---------- Reset ---------- */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 24px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* ---------- Typography ---------- */
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--text);
+    line-height: 1.15;
+    letter-spacing: -0.04em;
+}
+
+h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+}
+
+h2 {
+    margin-top: 32px;
+    font-size: clamp(1.7rem, 4vw, 2.5rem);
+    font-weight: 750;
+}
+
+h3 {
+    font-size: 1.4rem;
+}
+
+p {
+    color: var(--muted);
+    line-height: 1.85;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    position: relative;
+    z-index: 10;
+    margin: 24px 0;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+    color: var(--text);
+    text-decoration: none;
+}
+
+#logo {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.site-title {
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+    overflow-wrap: anywhere;
+}
+
+/* Compatibility with old headers */
+
+.main_logo_title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin: 24px 0 32px;
+}
+
+.main_logo_title h1 {
+    margin: 0;
+}
+
+.main_logo_title #logo {
+    width: 64px;
+    height: 64px;
+}
+
+/* ---------- More Menu ---------- */
+
+.more-menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.more-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    font-weight: 650;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+        background-color 180ms ease,
+        border-color 180ms ease;
+}
+
+.more-button:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.more-arrow {
+    display: inline-block;
+    transition: transform 220ms ease;
+}
+
+/* Menu is hidden initially */
+
+.more-links {
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 10px);
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: max-content;
+    max-width: min(75vw, 700px);
+    padding: 6px;
+
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 8%);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translate(16px, -50%);
+
+    transition:
+        opacity 180ms ease,
+        transform 220ms ease,
+        visibility 180ms ease;
+}
+
+.more-links a {
+    padding: 8px 12px;
+    border-radius: 999px;
+    color: var(--text);
+    text-decoration: none;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition:
+        background-color 180ms ease,
+        color 180ms ease;
+}
+
+.more-links a:hover {
+    background: var(--accent);
+    color: var(--text);
+}
+
+/* Reveal menu */
+
+.more-menu:hover .more-links,
+.more-menu:focus-within .more-links {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate(0, -50%);
+}
+
+.more-menu:hover .more-arrow,
+.more-menu:focus-within .more-arrow {
+    transform: rotate(180deg);
+}
+
+/* ---------- Legacy Navigation ---------- */
+
+/* Supports pages that still use <center> */
+
+body > hr + center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    text-align: left;
+    padding: 12px 0;
+}
+
+/* Supports the new <nav> structure */
+
+nav:not(.more-links) center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    text-align: left;
+    padding: 12px 0;
+}
+
+body > hr + center a,
+nav:not(.more-links) a {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 999px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition:
+        background-color 180ms ease,
+        color 180ms ease;
+}
+
+body > hr + center a:hover,
+nav:not(.more-links) a:hover {
+    background: var(--accent);
+    color: var(--text);
+}
+
+/* ---------- General Links ---------- */
+
+a {
+    color: var(--text);
+    text-underline-offset: 4px;
+}
+
+a:hover {
+    color: var(--accent-dark);
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--accent-dark);
+    outline-offset: 4px;
+}
+
+/* ---------- Dividers ---------- */
+
+hr {
+    height: 1px;
+    border: 0;
+    background: var(--border);
+    margin: 24px 0;
+}
+
+/* ---------- Content ---------- */
+
+main {
+    min-height: 45vh;
+}
+
+main > p {
+    max-width: 720px;
+}
+
+section {
+    margin: 32px 0;
+}
+
+/* ---------- Recent Updates ---------- */
+
+.recent_updates {
+    max-height: 240px;
+    overflow: auto;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.recent_updates h2 {
+    margin-top: 0;
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+    margin-top: 48px;
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+}
+
+footer p,
+body > center p {
+    margin: 6px 0;
+    font-size: 0.9rem;
+}
+
+/* ---------- Events Calendar (future use) ---------- */
+
+.calendar-year,
+.calendar-month,
+.event-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     padding: 20px;
 }
-#logo{
-    width: 100px;
-    height: 100px;
-}
-.main_logo_title{
-    display: flex;
-    align-items: center;       
-    justify-content: center;  
-    gap: 20px;                 
-    margin-top: 40px;          
-    margin-bottom: 20px;       
-}
-.recent_updates{
-    width: autousing namespace std;;
-    max-height: 200px;
 
-    overflow: auto; 
+.calendar-month {
+    cursor: pointer;
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease;
+}
+
+.calendar-month:hover {
+    transform: translateY(-3px);
+    border-color: var(--text);
+}
+
+.event-card {
+    overflow: hidden;
+}
+
+.event-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 600px) {
+    body {
+        padding: 16px;
+    }
+
+    .site-header {
+        gap: 10px;
+        margin: 16px 0 24px;
+    }
+
+    .brand {
+        gap: 8px;
+    }
+
+    #logo,
+    .main_logo_title #logo {
+        width: 44px;
+        height: 44px;
+    }
+
+    .site-title {
+        font-size: clamp(1.1rem, 5vw, 1.5rem);
+    }
+
+    .main_logo_title {
+        gap: 12px;
+        margin: 16px 0 24px;
+    }
+
+    .main_logo_title h1 {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+
+    body > hr + center,
+    nav:not(.more-links) center {
+        gap: 4px;
+    }
+
+    body > hr + center a,
+    nav:not(.more-links) a {
+        padding: 7px 10px;
+        font-size: 0.88rem;
+    }
+
+    /* Dropdown on smaller screens */
+
+    .more-links {
+        top: calc(100% + 10px);
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        width: max-content;
+        max-width: 80vw;
+        border-radius: 14px;
+        transform: translateY(-8px);
+    }
+
+    .more-menu:hover .more-links,
+    .more-menu:focus-within .more-links {
+        transform: translateY(0);
+    }
+
+    .more-links a {
+        padding: 10px 14px;
+    }
+}
+
+/* ---------- Reduced Motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
 }
