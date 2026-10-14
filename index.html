@@ -2,23 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7f5ef">
+    <meta name="color-scheme" content="light dark">
     <title>tinkerhub/cetkr</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="img/logo.ico" type="image/x-icon">
+    <link rel="icon" href="img/logo.svg" type="image/x-icon">
 </head>
 <body>
     <header class="site-header">
         <a href="index.html" class="brand">
-            <img src="img/logo.png" alt="TinkerHub logo" id="logo">
+            <img src="img/logo.svg" alt="TinkerHub CETKR logo" id="logo">
             <span class="site-title">tinkerhub/cetkr</span>
         </a>
-
         <div class="more-menu">
-            <button class="more-button" type="button">
-                More <span class="more-arrow">→</span>
+            <button class="more-button" type="button" aria-label="Open site navigation">
+                More <span class="more-arrow" aria-hidden="true">→</span>
             </button>
-
-            <nav class="more-links">
+            <nav class="more-links" aria-label="Main navigation">
                 <a href="index.html">Home</a>
                 <a href="projects.html">Projects</a>
                 <a href="finance.html">Finances</a>
@@ -26,54 +27,105 @@
                 <a href="events.html">Events</a>
             </nav>
         </div>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch theme">
+            <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+            <span class="theme-toggle-label">Dark</span>
+        </button>
     </header>
-    
-
-    <hr>
-
-    <div class="recent_updates">
-        <h2>Recent Updates</h2>
-        <ul>
-            <li><a href="codeconnect.html">CodeConnect</a></li>
-
-
-        </ul>
-    </div> <hr>
-    
-    <div>
-        <h2>Vision</h2>
-        <p style="font-style: italic;">"No matter what anybody tells you, words and ideas can change the world."
-— Dead Poets Society </p>
-        <p>
-            In a world driven by rapid technological advancements, we often focus on the tools and innovations that lie beyond us. But the question is: what lies within?
-
-            With the renewed tinkerhub/cetkr chapter, we believe that the greatest resource is not technology itself, but the passionate learners behind it and the fundamental spirit of curiosity and creativity that drives them.
-
-            We are surrounded by knowledge, technology, and opportunities. Yet, the true measure of our potential is defined by our willingness to learn, collaborate, experiment, and create.
-
-            This Vision serves as a blueprint for the year ahead, a commitment to creating a culture of learning, innovation, and collaboration within our campus. Through initiatives, events, projects, and shared experiences, we aim to create opportunities that inspire us to discover Ourselves.
-
+    <main class="page-body">
+    <section class="home-hero reveal">
+        <p class="eyebrow">TINKERHUB · COLLEGE OF ENGINEERING TRIKARIPUR</p>
+        <h1>Curious minds.<br><span>Collective growth.</span></h1>
+        <p class="hero-description">
+            A campus community built around learning, experimenting,
+            collaborating, and creating things together.
         </p>
-    </div>
-
+        <a href="#recent-updates" class="hero-link">
+            Explore what's happening <span aria-hidden="true">↓</span>
+        </a>
+    </section>
     <hr>
-
-    <div>
-        <h2>Team</h2>
-        <ul>
-            <li>Nayan Keshav - Campus Lead</li>
-            <li>Adith K  - Outreach Lead</li>
-            <li>Bhadrapriya N - Learning Coordnator</li>
-            <li>Aparna VS - Woman In Tech</li>
-            <li>Muhammad Rishal P V - First Year Coordinator</li>
+    <section class="home-section reveal" id="recent-updates">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">LATEST FROM THE COMMUNITY</p>
+                <h2>Recent Updates</h2>
+            </div>
+            <span class="section-index">01 / UPDATES</span>
+        </div>
+        <div class="updates-list">
+            <a href="codeconnect.html" class="update-item">
+                <span class="update-number">01</span>
+                <div class="update-content">
+                    <h3>./CodeConnect</h3>
+                    <p>
+                        A weekly problem-solving initiative focused on
+                        consistent practice and peer learning.
+                    </p>
+                </div>
+                <span class="update-arrow" aria-hidden="true">↗</span>
+            </a>
+        </div>
+    </section>
+    <hr>
+    <section class="home-section vision-section reveal">
+        <p class="eyebrow">WHY WE EXIST</p>
+        <h2>Vision</h2>
+        <blockquote class="vision-quote">
+            "No matter what anybody tells you, words and ideas can
+            change the world."
+            <cite>— Dead Poets Society</cite>
+        </blockquote>
+        <div class="vision-copy">
+            <p>
+                In a world driven by rapid technological advancements,
+                we often focus on the tools and innovations that lie
+                beyond us. But the question is: what lies within?
+            </p>
+            <p>
+                With the renewed TinkerHub CETKR chapter, we believe
+                that the greatest resource is not technology itself,
+                but the passionate learners behind it and the
+                fundamental spirit of curiosity and creativity that
+                drives them.
+            </p>
+            <p>
+                We are surrounded by knowledge, technology, and
+                opportunities. Yet, our potential depends on our
+                willingness to learn, collaborate, experiment,
+                and create.
+            </p>
+            <p>
+                This vision serves as a blueprint for the year ahead:
+                a commitment to building a culture of learning,
+                innovation, and collaboration within our campus.
+                Through initiatives, events, projects, and shared
+                experiences, we aim to create opportunities that
+                inspire us to discover ourselves.
+            </p>
+        </div>
+    </section>
+    <hr>
+    <section class="home-section team-section reveal">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">THE PEOPLE BEHIND IT</p>
+                <h2>Our Team</h2>
+            </div>
+            <span class="section-index">02 / TEAM</span>
+        </div>
+        <ul class="team-list">
+            <li><span class="team-name">Nayan Keshav</span><span class="team-role">Campus Lead</span></li>
+            <li><span class="team-name">Adith K</span><span class="team-role">Outreach Lead</span></li>
+            <li><span class="team-name">Bhadrapriya N</span><span class="team-role">Learning Coordinator</span></li>
+            <li><span class="team-name">Aparna VS</span><span class="team-role">Women in Tech</span></li>
         </ul>
-    </div>
-
-    <hr>
-    <center>
-        <p style="font-style: italic;">Live.Life</p>
-        <p>Team tinkerhub/cetkr</p>
-    </center>
+    </section>
+    </main>
+    <footer class="site-footer">
+        <span class="footer-motto">Live.Life</span>
+        <span>Team tinkerhub/cetkr</span>
+    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
-

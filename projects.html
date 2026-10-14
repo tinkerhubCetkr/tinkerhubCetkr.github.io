@@ -2,24 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7f5ef">
+    <meta name="color-scheme" content="light dark">
     <title>tinkerhub/cetkr/Projects</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="img/logo.ico" type="image/x-icon">
+    <link rel="icon" href="img/logo.svg" type="image/x-icon">
 </head>
 <body>
-
     <header class="site-header">
         <a href="index.html" class="brand">
-            <img src="img/logo.png" alt="TinkerHub logo" id="logo">
+            <img src="img/logo.svg" alt="TinkerHub CETKR logo" id="logo">
             <span class="site-title">tinkerhub/cetkr</span>
         </a>
-
         <div class="more-menu">
-            <button class="more-button" type="button">
-                More <span class="more-arrow">→</span>
+            <button class="more-button" type="button" aria-label="Open site navigation">
+                More <span class="more-arrow" aria-hidden="true">→</span>
             </button>
-
-            <nav class="more-links">
+            <nav class="more-links" aria-label="Main navigation">
                 <a href="index.html">Home</a>
                 <a href="projects.html">Projects</a>
                 <a href="finance.html">Finances</a>
@@ -27,19 +27,20 @@
                 <a href="events.html">Events</a>
             </nav>
         </div>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch theme">
+            <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+            <span class="theme-toggle-label">Dark</span>
+        </button>
     </header>
-    <hr>
-
-    <div>
-        <h2>./Projects</h2>
-        <p style="font-style: italic;">"One step at a time. One punch at a time. One round at a time."
-— Creed (2015) </p>
-    </div>
-
-
-    <hr>
-    <center>
-        <p>team tinkerhub/cetkr</p>
-    </center>
+    <main class="page-body">
+        <section class="page-intro reveal">
+            <h1>./Projects</h1>
+            <p class="project-quote">"One step at a time. One punch at a time. One round at a time."<br>— Creed (2015)</p>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <span>team tinkerhub/cetkr</span>
+    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
