@@ -513,7 +513,6 @@ body > div:not(.more-menu) p {
     border-left: 4px solid var(--accent);
     font-size: clamp(1.35rem, 3vw, 2.1rem);
     font-weight: 650;
-    font-style: italic;
     letter-spacing: -.04em;
     line-height: 1.4;
 }
@@ -523,7 +522,7 @@ body > div:not(.more-menu) p {
     margin-top: 14px;
     color: var(--muted);
     font-size: .9rem;
-    font-style: italic;
+    font-style: normal;
     font-weight: 500;
     letter-spacing: 0;
 }
@@ -570,8 +569,9 @@ body > div:not(.more-menu) p {
 }
 
 .codeconnect-content {
-    max-width: 900px;
-    margin: 0 auto;
+    width: 100%;
+    max-width: none;
+    margin: 28px 0;
 }
 
 .codeconnect-content h1 {
@@ -586,7 +586,8 @@ body > div:not(.more-menu) p {
 }
 
 .codeconnect-content p {
-    max-width: 800px;
+    width: 100%;
+    max-width: none;
 }
 
 .program-format {
@@ -863,11 +864,10 @@ body > div:not(.more-menu) p {
     max-width: 900px;
 }
 .project-quote {
-    max-width: 850px;
+    max-width: none;
     padding-left: 18px;
     border-left: 3px solid var(--accent);
     font-size: clamp(1.15rem, 2.5vw, 1.6rem);
-    font-style: italic;
 }
 .page-intro + hr {
     margin-top: 0;
@@ -1051,4 +1051,85 @@ body {
 @media (max-width: 420px) {
     .theme-toggle { width: 42px; padding: 0; }
     .theme-toggle-label { display: none; }
+}
+
+
+/* CodeConnect wide-screen refinement */
+@media (min-width: 761px) {
+    .page-body {
+        width: 100%;
+        max-width: 1480px;
+        margin-inline: auto;
+    }
+
+    .codeconnect-content {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding-top: clamp(36px, 4.5vw, 72px);
+        padding-bottom: clamp(40px, 5vw, 80px);
+    }
+
+    .codeconnect-content > .eyebrow {
+        margin-bottom: 18px;
+    }
+
+    .codeconnect-content h1 {
+        margin-bottom: clamp(28px, 3vw, 44px);
+        font-size: clamp(3.6rem, 6.5vw, 6.2rem);
+        letter-spacing: -.065em;
+    }
+
+    .codeconnect-content .project-quote {
+        max-width: 980px;
+        margin: 0 0 42px 4px;
+        padding: 10px 0 10px 24px;
+        border-left-width: 4px;
+        line-height: 1.65;
+    }
+
+    .codeconnect-content h2 {
+        margin-top: 42px;
+        margin-bottom: 16px;
+        font-size: clamp(1.65rem, 2.3vw, 2.15rem);
+    }
+
+    .codeconnect-content p:not(.eyebrow) {
+        max-width: 1280px;
+        margin: 0 0 18px;
+        font-size: clamp(1rem, 1.05vw, 1.12rem);
+        line-height: 1.9;
+    }
+
+    .codeconnect-content .program-format {
+        max-width: 1280px;
+        margin-top: 8px;
+        padding: 24px 30px 18px 48px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: var(--surface);
+    }
+
+    .codeconnect-content .program-format li {
+        padding: 8px 0 8px 6px;
+        margin-bottom: 4px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .codeconnect-content > h2,
+    .codeconnect-content > p:not(.eyebrow),
+    .codeconnect-content .program-format {
+        max-width: 1360px;
+    }
+}
+
+@media (max-width: 760px) {
+    .codeconnect-content {
+        padding-top: 32px;
+    }
+
+    .codeconnect-content .project-quote {
+        margin-bottom: 30px;
+    }
 }
