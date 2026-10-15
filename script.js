@@ -82,4 +82,97 @@
             }
         });
     });
+
+    // Interactive Events calendar. Add real events to eventData using YYYY-MM-DD keys.
+    const calendarRoot = document.querySelector('#calendar');
+    if (calendarRoot) {
+        const year = new Date().getFullYear();
+        const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+        // Keep empty until confirmed event dates and descriptions are supplied.
+        const eventData = {};
+        const yearView = document.querySelector('#calendar-year-view');
+        const monthView = document.querySelector('#calendar-month-view');
+        const monthTitle = document.querySelector('#calendar-month-title');
+        const daysView = document.querySelector('#calendar-days');
+        const detailsTitle = document.querySelector('#event-details-title');
+        const detailsCopy = document.querySelector('#event-details-copy');
+        const yearLabel = document.querySelector('#calendar-year');
+        let activeMonth = new Date().getMonth();
+        let selectedDate = '';
+        yearLabel.textContent = year;
+
+        monthNames.forEach((name, index) => {
+            const card = document.createElement('button');
+            card.type = 'button';
+            card.className = 'calendar-year-card';
+            card.innerHTML = `<span class="calendar-month-number">MONTH ${(index + 1).toString().padStart(2, '0')}</span><span class="calendar-month-name">${name}</span><span class="calendar-month-meta">${new Date(year, index + 1, 0).getDate()} days · View calendar</span>`;
+            card.addEventListener('click', () => openMonth(index));
+            yearView.appendChild(card);
+        });
+
+        function openMonth(index) {
+            activeMonth = (index + 12) % 12;
+            yearView.hidden = true;
+            monthView.hidden = false;
+            renderMonth();
+            monthView.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+        }
+        function renderMonth() {
+            monthTitle.textContent = `${monthNames[activeMonth]} ${year}`;
+            daysView.replaceChildren();
+            const firstWeekday = new Date(year, activeMonth, 1).getDay();
+            const daysInMonth = new Date(year, activeMonth + 1, 0).getDate();
+            for (let i = 0; i < firstWeekday; i++) {
+                const blank = document.createElement('span');
+                blank.className = 'calendar-day-empty';
+                blank.setAttribute('aria-hidden', 'true');
+                daysView.appendChild(blank);
+            }
+            for (let day = 1; day <= daysInMonth; day++) {
+                const key = `${year}-${String(activeMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'calendar-day';
+                button.textContent = day;
+                button.setAttribute('aria-label', `${monthNames[activeMonth]} ${day}, ${year}${eventData[key] ? ', event available' : ''}`);
+                if (eventData[key]) button.classList.add('has-event');
+                if (key === selectedDate) button.classList.add('is-selected');
+                button.addEventListener('click', () => showDate(key, day));
+                daysView.appendChild(button);
+            }
+            if (!selectedDate || !selectedDate.startsWith(`${year}-${String(activeMonth + 1).padStart(2, '0')}-`)) {
+                detailsTitle.textContent = 'Choose a date';
+                detailsCopy.textContent = 'Select any day in the calendar to see its events and memories.';
+            } else {
+                const day = Number(selectedDate.slice(-2));
+                updateDetails(selectedDate, day);
+            }
+        }
+        function showDate(key, day) {
+            selectedDate = key;
+            daysView.querySelectorAll('.calendar-day').forEach(button => {
+                const isSelected = Number(button.textContent) === day;
+                button.classList.toggle('is-selected', isSelected);
+                button.setAttribute('aria-pressed', String(isSelected));
+            });
+            updateDetails(key, day);
+        }
+        function updateDetails(key, day) {
+            detailsTitle.textContent = `${monthNames[activeMonth]} ${day}, ${year}`;
+            const event = eventData[key];
+            if (!event) {
+                detailsCopy.textContent = 'No event has been added for this date yet. Add confirmed event details and photos to the calendar data when they are ready.';
+                return;
+            }
+            detailsCopy.textContent = typeof event === 'string' ? event : `${event.title}${event.description ? ` — ${event.description}` : ''}`;
+        }
+        document.querySelector('#calendar-back').addEventListener('click', () => {
+            monthView.hidden = true;
+            yearView.hidden = false;
+            yearView.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+        });
+        document.querySelector('#calendar-prev').addEventListener('click', () => openMonth(activeMonth - 1));
+        document.querySelector('#calendar-next').addEventListener('click', () => openMonth(activeMonth + 1));
+    }
+
 })();

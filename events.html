@@ -37,9 +37,35 @@
             <h1>Events &amp; Memories</h1>
             <p>Explore the events, workshops, meetups and memories of TinkerHub CETKR.</p>
         </section>
-        <section id="calendar" class="reveal">
-            <h2>Event Calendar</h2>
-            <p>Our event calendar will appear here. We're building it one step at a time.</p>
+        <section id="calendar" class="events-calendar reveal" aria-labelledby="calendar-title">
+            <div class="calendar-heading">
+                <div>
+                    <p class="calendar-kicker">LOOK BACK · SHOW UP · MAKE MEMORIES</p>
+                    <h2 id="calendar-title">Event Calendar <span id="calendar-year"></span></h2>
+                    <p class="calendar-description">Explore the year, open a month, and choose a date to discover what happened.</p>
+                </div>
+                <span class="calendar-count"><span aria-hidden="true">✳</span> 12 months of community</span>
+            </div>
+            <div id="calendar-year-view" class="calendar-year-grid" aria-label="Months of the year"></div>
+            <div id="calendar-month-view" class="calendar-month-view" hidden>
+                <div class="calendar-month-top">
+                    <button class="calendar-back" id="calendar-back" type="button">← All months</button>
+                    <h3 id="calendar-month-title"></h3>
+                    <div class="calendar-month-nav">
+                        <button id="calendar-prev" type="button" aria-label="Previous month">←</button>
+                        <button id="calendar-next" type="button" aria-label="Next month">→</button>
+                    </div>
+                </div>
+                <div class="calendar-weekdays" aria-hidden="true">
+                    <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                </div>
+                <div id="calendar-days" class="calendar-days" aria-label="Days of the month"></div>
+                <section id="event-details" class="event-details" aria-live="polite" aria-labelledby="event-details-title">
+                    <p class="calendar-kicker">ON THIS DAY</p>
+                    <h4 id="event-details-title">Choose a date</h4>
+                    <p id="event-details-copy">Select any day in the calendar to see its events and memories.</p>
+                </section>
+            </div>
         </section>
     </main>
     <footer class="site-footer">
